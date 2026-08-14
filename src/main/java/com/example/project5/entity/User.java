@@ -19,6 +19,8 @@ public class User extends BaseEntity implements UserDetails {
     private String username;
     @Column(nullable = false, length = 120)
     private String password;
+    @Column(nullable = false,unique = true, length = 60)
+    private String email;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     @ElementCollection(fetch = FetchType.EAGER)
