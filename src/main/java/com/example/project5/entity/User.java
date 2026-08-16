@@ -9,7 +9,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Setter
@@ -19,16 +19,16 @@ public class User extends BaseEntity implements UserDetails {
     private String username;
     @Column(nullable = false, length = 120)
     private String password;
-    @Column(nullable = false,unique = true, length = 60)
+    @Column(nullable = false, unique = true, length = 60)
     private String email;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    @ElementCollection(fetch = FetchType.EAGER)
-    private Set<Role> roles;
+    private Role role;
+    @OneToMany(mappedBy = "user")
+    private List<BankAccount> bankAccountList;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles.stream()
-                .map(r -> new SimpleGrantedAuthority(r.name()))
-                .toList();
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 }
