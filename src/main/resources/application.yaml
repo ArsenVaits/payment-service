@@ -1,0 +1,22 @@
+server:
+  port: ${PORT:8080}
+spring:
+  application:
+    name: Payment_Service
+
+  datasource:
+    url:
+    password:
+    username:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.xml
+
+
+
+jwt:
+  secret: "${JWT_SECRET:bXlTZWNyZXRLZXlGb3JKV1RUb2tlbkdlbmVyYXRpb24=}"
+  expiration: ${JWT_EXPIRATION:86000}
