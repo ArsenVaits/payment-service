@@ -14,6 +14,7 @@ import java.util.List;
 @Entity
 @Setter
 @Getter
+@Table(name = "users")
 public class User extends BaseEntity implements UserDetails {
     @Column(nullable = false, unique = true, length = 30)
     private String username;

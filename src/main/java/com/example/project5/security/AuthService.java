@@ -24,7 +24,7 @@ public class AuthService {
 
 
     public ResponseAuthTokenDTO register(RegisterRequestDTO dto){
-        if(userRepository.loadByUsername(dto.username()).isPresent()){
+        if(userRepository.findByUsername(dto.username()).isPresent()){
             throw new UserAlreadyExistsException("Пользователь уже существует!");
         }
 

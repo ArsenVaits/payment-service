@@ -5,15 +5,16 @@ spring:
     name: Payment_Service
 
   datasource:
-    url:
+    url: jdbc:postgresql://localhost:5432/payment_service
     password:
-    username:
+    username: arsen_vaits
   jpa:
     hibernate:
       ddl-auto: validate
 
   liquibase:
-    change-log: classpath:db/changelog/changelog-master.xml
+    enabled: true
+    change-log: "classpath:db/changelog/db.changelog-master.xml"
 
 
 
